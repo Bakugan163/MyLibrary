@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Моя библиотека</title>
+</head>
+<style>
+         * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+         }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+
+        }
+
+        .container {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+ 
+            
+        }
+         h2 {
+        margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+            }
+        input {
+            width: 70%;
+            padding: 8px;
+            font-size: 18px;
+            border: 1px solid #ddd;
+        }
+
+        button {
+            font-size: 16px;
+            padding: 8px 16px;
+            background-color: #a6b2b4;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #a2e08f;
+        }
+        .delete-btn-outline {
+            background-color: transparent;
+            color: #e74c3c;
+            border: 2px solid #e74c3c;
+            padding: 5px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .delete-btn-outline:hover {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .h3 {
+            
+        }
+
+        /* Заголовки столбцов */
+.book-headers {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin: 10px 0;
+    background: #6366f1;
+    color: white;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.book-headers span {
+    padding: 5px;
+}
+
+.header-status {
+    width: 30px;
+    text-align: center;
+}
+
+.header-title {
+    flex-grow: 2;
+}
+
+.header-author {
+    flex-grow: 1.5;
+}
+
+.header-genre {
+    flex-grow: 1;
+}
+
+.header-year {
+    width: 60px;
+    text-align: center;
+}
+
+.header-action {
+    width: 80px;
+    text-align: center;
+}
+
+
+li {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin: 5px 0;
+    background: #f9f9f9;
+    border-radius: 5px;
+    gap: 10px;
+    }
+
+.book-info {
+    flex-grow: 1;
+    display: flex;
+    gap: 10px;
+    }
+
+.book-info span {
+    padding: 5px;
+    }
+
+.book-title {
+    flex-grow: 2;
+    font-weight: 500;
+    }
+
+    .book-author {
+    flex-grow: 1.5;
+    color: #666;
+    }
+
+    .book-genre {
+    flex-grow: 1;
+    color: #888;
+    }
+
+    .book-year {
+    width: 60px;
+    text-align: center;
+    color: #888;
+    }
+
+    .delete-btn-outline {
+    width: 80px;
+    background: transparent;
+    color: #e74c3c;
+    border: 1px solid #e74c3c;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    }
+
+    .delete-btn-outline:hover {
+     background: #e74c3c;
+     color: white;
+    }
+
+    input[type="checkbox"] {
+        width: 30px;
+        cursor: pointer;
+    }
+        </style>
+<body>
+     <div class="container">
+        <h2>📚Моя библиотека</h2>
+        <h3 class="h3">Заполните, чтобы добавить книгу</h3>
+        <input type="text" id="title" placeholder="введите название книги..."> <br>
+        <input type="text" id="author" placeholder="автор..."> <br>
+        <input type="text" id="genre" placeholder="жанр..."> <br>
+        <input type="number" id="year" placeholder="год издания..."> <br>
+        <label>Статус</label>
+        <label>
+        <input type="checkbox" id="status"> Прочитана
+        </label> <br>
+
+        <button id="addButton">Добавить</button>
+        
+        <div class="book-headers">
+        <span class="header-status">✓</span>
+        <span class="header-title">Название</span>
+        <span class="header-author">Автор</span>
+        <span class="header-genre">Жанр</span>
+        <span class="header-year">Год</span>
+        <span class="header-action">Действие</span>
+        </div>
+
+<ul id="bookList"></ul>
+        <ul id="bookList"></ul>
+
+        <div>
+        <input id="search" placeholder="поиск...">
+        <button id="btnSearch">Найти</button>
+
+        <ol id="finded"></ol>
+    </div>
+
+    </div>
+
+    
+<div id="searchModal" class="modal" style="display: none;">
+    <div class="modal-content modal-search">
+        <h3>🔍 Поиск книг</h3>
+        <input type="text" id="searchInput" placeholder="Введите название, автора, жанр или год...">
+        <div id="searchResults" class="search-results"></div>
+        <button id="closeSearchBtn" class="close-btn">Закрыть</button>
+    </div>
+</div>
+
+<div id="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 1000;">
+    <div style="background: white; padding: 30px; border-radius: 12px; text-align: center; min-width: 250px;">
+        <p>Удалить книгу <strong id="modalBookTitle"></strong>?</p>
+        <button id="modalConfirmBtn" style="background: #e74c3c; color: white; margin-right: 10px;">Да, удалить</button>
+        <button id="modalCancelBtn" style="background: #a6b2b4;">Отмена</button>
+    </div>
+</div>
+
+    <script src="books.js"></script>
+
+   
+</body>
+</html>
