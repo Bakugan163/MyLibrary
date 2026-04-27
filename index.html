@@ -31,7 +31,6 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             width: 100%;
             max-width: 500px;
- 
             
         }
          h2 {
@@ -73,12 +72,7 @@
             color: white;
         }
 
-        .h3 {
-            
-        }
-
-        /* Заголовки столбцов */
-.book-headers {
+   .book-headers {
     display: flex;
     align-items: center;
     padding: 10px;
@@ -213,23 +207,13 @@ li {
 
         <div>
         <input id="search" placeholder="поиск...">
-        <button id="btnSearch">Найти</button>
+        <button id="btnSearch">🔍Найти</button>
 
         <ol id="finded"></ol>
     </div>
 
     </div>
-
     
-<div id="searchModal" class="modal" style="display: none;">
-    <div class="modal-content modal-search">
-        <h3>🔍 Поиск книг</h3>
-        <input type="text" id="searchInput" placeholder="Введите название, автора, жанр или год...">
-        <div id="searchResults" class="search-results"></div>
-        <button id="closeSearchBtn" class="close-btn">Закрыть</button>
-    </div>
-</div>
-
 <div id="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 1000;">
     <div style="background: white; padding: 30px; border-radius: 12px; text-align: center; min-width: 250px;">
         <p>Удалить книгу <strong id="modalBookTitle"></strong>?</p>
@@ -240,6 +224,5 @@ li {
 
     <script src="books.js"></script>
 
-   
 </body>
 </html>
