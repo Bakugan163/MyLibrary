@@ -30,7 +30,7 @@
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             width: 100%;
-            max-width: 500px;
+            max-width: 70%;
             
         }
          h2 {
@@ -72,112 +72,124 @@
             color: white;
         }
 
-   .book-headers {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    margin: 10px 0;
-    background: #6366f1;
-    color: white;
-    border-radius: 5px;
-    font-weight: 600;
-    font-size: 14px;
-}
+        
+        .book-headers {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            margin: 10px 0;
+            background: #6366f1;
+            color: white;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 14px;
+        }
 
-.book-headers span {
-    padding: 5px;
-}
+        .book-headers span {
+            padding: 5px;
+        }
 
-.header-status {
-    width: 30px;
-    text-align: center;
-}
+        .header-status {
+            width: 30px;
+            text-align: center;
+        }
 
-.header-title {
-    flex-grow: 2;
-}
+        .header-title {
+            flex-grow: 2;
+        }
 
-.header-author {
-    flex-grow: 1.5;
-}
+        .header-author {
+            flex-grow: 1.5;
+        }
 
-.header-genre {
-    flex-grow: 1;
-}
+        .header-genre {
+            flex-grow: 1;
+        }
 
-.header-year {
-    width: 60px;
-    text-align: center;
-}
+        .header-year {
+            width: 60px;
+            text-align: center;
+        }
 
-.header-action {
-    width: 80px;
-    text-align: center;
-}
+        .header-action {
+            width: 80px;
+            text-align: center;
+        }
 
 
-li {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    margin: 5px 0;
-    background: #f9f9f9;
-    border-radius: 5px;
-    gap: 10px;
-    }
+        li {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            margin: 5px 0;
+            background: #f9f9f9;
+            border-radius: 5px;
+            gap: 10px;
+            }
 
-.book-info {
-    flex-grow: 1;
-    display: flex;
-    gap: 10px;
-    }
+        .book-info {
+            flex-grow: 1;
+            display: flex;
+            gap: 10px;
+            }
 
-.book-info span {
-    padding: 5px;
-    }
+        .book-info span {
+            padding: 5px;
+            }
 
-.book-title {
-    flex-grow: 2;
-    font-weight: 500;
-    }
+        .book-title {
+            flex-grow: 2;
+            font-weight: 500;
+            }
 
-    .book-author {
-    flex-grow: 1.5;
-    color: #666;
-    }
+            .book-author {
+            flex-grow: 1.5;
+            color: #666;
+            }
 
-    .book-genre {
-    flex-grow: 1;
-    color: #888;
-    }
+            .book-genre {
+            flex-grow: 1;
+            color: #888;
+            }
 
-    .book-year {
-    width: 60px;
-    text-align: center;
-    color: #888;
-    }
+            .book-year {
+            width: 60px;
+            text-align: center;
+            color: #888;
+            }
 
-    .delete-btn-outline {
-    width: 80px;
-    background: transparent;
-    color: #e74c3c;
-    border: 1px solid #e74c3c;
-    padding: 5px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 12px;
-    }
+            .delete-btn-outline {
+            width: 80px;
+            background: transparent;
+            color: #e74c3c;
+            border: 1px solid #e74c3c;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            }
 
-    .delete-btn-outline:hover {
-     background: #e74c3c;
-     color: white;
-    }
+            .delete-btn-outline:hover {
+            background: #e74c3c;
+            color: white;
+            }
 
-    input[type="checkbox"] {
-        width: 30px;
-        cursor: pointer;
-    }
-        </style>
+            input[type="checkbox"] {
+                width: 30px;
+                cursor: pointer;
+            }
+
+            body {
+            background: url('https://img.freepik.com/premium-photo/stack-books-shelf-with-blue-background_1013369-64982.jpg?semt=ais_hybrid&w=740&q=80') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+                </style>
 <body>
      <div class="container">
         <h2>📚Моя библиотека</h2>
@@ -193,7 +205,7 @@ li {
 
         <button id="addButton">Добавить</button>
         
-        <div class="book-headers">
+        <div id="bookHeaders" class="book-headers" style="display: none;">
         <span class="header-status">✓</span>
         <span class="header-title">Название</span>
         <span class="header-author">Автор</span>
@@ -203,16 +215,16 @@ li {
         </div>
 
 <ul id="bookList"></ul>
-        <ul id="bookList"></ul>
-
+        
         <div>
-        <input id="search" placeholder="поиск...">
-        <button id="btnSearch">🔍Найти</button>
+        <input id="search" placeholder="🔍поиск...">
+        <button id="btnSearch">Поиск</button>
 
         <ol id="finded"></ol>
     </div>
 
     </div>
+
     
 <div id="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 1000;">
     <div style="background: white; padding: 30px; border-radius: 12px; text-align: center; min-width: 250px;">
@@ -223,6 +235,6 @@ li {
 </div>
 
     <script src="books.js"></script>
-
+   
 </body>
 </html>
