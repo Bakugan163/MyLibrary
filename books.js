@@ -15,6 +15,7 @@
     const modalBookTitle = document.getElementById("modalBookTitle");
     const modalConfirmBtn = document.getElementById("modalConfirmBtn");
     const modalCancelBtn = document.getElementById("modalCancelBtn");
+    const bookHeaders = document.getElementById("bookHeaders");
     let pendingDeleteId = null;
 
     let books = [];
@@ -29,12 +30,20 @@
     if (booksJson == null || booksJson == '') {
         return;
     }
+    books = JSON.parse(booksJson);
  
     
 }
 
 function renderLibrary() {
     bookList.innerHTML = '';
+
+    if (books.length > 0) {
+        bookHeaders.style.display = 'flex';  
+    } else {
+        bookHeaders.style.display = 'none';
+        }
+
     for (let i = 0; i < books.length; i++) {
         let book = books[i];
         
